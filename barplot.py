@@ -1,14 +1,16 @@
 import matplotlib.pyplot as plt
+import statistics
+
 
 # Configuration ----------------------------------------
 
-# number of adjascent boxes = number of things to compare
-# legends, one for each box
-box_legends = ['BoxType1', 'BoxType2']
+# number of adjascent bars = number of things to compare
+# = legends, one for each box
+bar_legends = ['BarType1', 'BarType2', 'BarType3']
 
 
-# number of such groups of boxes = number of test cases
-# X labels = one for each group
+# number of such groups of bars = number of test cases
+# = X labels = one for each group
 group_labels = ["G1", "G2", "G3"]
 
 
@@ -16,7 +18,7 @@ xlabel = "Groups"
 ylabel = "Values"
 
 save=False
-file_name = "boxplot.eps"
+file_name = "barplot.eps"
 
 
 # Styles ------------------------------------------------
@@ -30,10 +32,11 @@ fig_size = (6, 4)
 
 #  Data-------------------------------------------------------
 #  Format = [
-#              [ [box1group1data],  [box1group2data],..],
-#              [ [box2group1data],  [box2group2data],..],
+#              [ [bar1group1data],  [bar1group2data],..],
+#              [ [bar2group1data],  [bar2group2data],..],
 #           ]
 
+#  OR YOU CAN ALSO PROVIDE MEAN AND STDEVS DIRECTLY
 
 data = [
 
@@ -47,16 +50,32 @@ data = [
 [1,2,3,4,5,6,7,4,4,5,6,6,7],
 [1,2,3,4,5,6,7,4,4,5,6,6,7],
 [1,2,3,4,5,6,7,4,4,5,6,6,7]
+],
+
+[
+[3,4,5,6,7,4],
+[4,5,6,7,4,4,5,6,],
+[5,6,7,4,4,5,6,6,7,8,8]
 ]
 
 ]
 
-
+data_means  = None
+data_stdev = None
 # ==============================================================================================
+
+if not data_means:
+    data_means = [ [statistics.mean(datalist) for datalist in bartype] for bartype in data ]
+
+if not data_stdev:
+    data_stdev = [ [statistics.stdev(datalist) for datalist in bartype] for bartype in data ]
+
+# print(data_means)
+# print(data_stdev)
 
 # compute positions
 number_of_groups =  len(group_labels)
-number_of_boxes = len(box_legends)
+number_of_boxes = len(bar_legends)
 
 positions = []
 for i in range(number_of_boxes):
@@ -84,21 +103,17 @@ fig.set_size_inches(fig_size[0], fig_size[1])
 
 
 # rectangular box plot
-medianprops = dict(linewidth=2, color='black')
-bplots = []
 k = 0
-for data_group in data:
-    bplot = plt.boxplot(data_group,
-                        vert=True,  # vertical box alignment
-                        patch_artist=True,  # fill with color
-                        # labels=labels[k:k+4],
-                        positions=positions[k],
-                        boxprops=dict(facecolor=colors[k]),
-                        medianprops=medianprops)
-    bplots.append(bplot)
+bplots = []
+for data_group in data_means:
+    print(data_group,data_stdev[k])
+    print(positions[k])
+    barplot = plt.bar(positions[k], data_group, 1, yerr=data_stdev[k], capsize=3)
     k += 1
+    bplots.append(barplot)
+plt.legend([bp[0] for bp in bplots], bar_legends, loc='upper left')
 
-plt.legend([bp["boxes"][0] for bp in bplots], box_legends, loc='upper left')
+
 
 
 plt.ylabel(ylabel)
