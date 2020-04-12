@@ -2,7 +2,7 @@
 Simple plotting scripts for a bit complicated matplotlib plots
 
 ## Grouped Boxplot
-![grouped boxplot image](https://github.com/ghoshbishakh/plotscripts/raw/master/images/barplot.png)
+![grouped boxplot image](https://github.com/ghoshbishakh/plotscripts/raw/master/images/boxplot.png)
 
 Just change `boxplot.py` with our data and configs in the following lines:
 
@@ -57,5 +57,76 @@ data = [
 ]
 
 ]
+```
+
+## Grouped Barplot
+
+![grouped barplot](https://github.com/ghoshbishakh/plotscripts/raw/master/images/barplot.png)
+
+Just change `barplot.py` with our data and configs in the following lines:
+
+
+```python
+# Configuration ----------------------------------------
+
+# number of adjascent bars = number of things to compare
+# = legends, one for each box
+bar_legends = ['BarType1', 'BarType2', 'BarType3']
+
+
+# number of such groups of bars = number of test cases
+# = X labels = one for each group
+group_labels = ["G1", "G2", "G3"]
+
+
+xlabel = "Groups"
+ylabel = "Values"
+
+save=False
+file_name = "barplot.eps"
+
+
+# Styles ------------------------------------------------
+
+xtickrotation = 0
+font_size = 12
+font_weight = 'bold'
+label_font_weight = 'bold'
+
+fig_size = (6, 4)
+
+#  Data-------------------------------------------------------
+#  Format = [
+#              [ [bar1group1data],  [bar1group2data],..],
+#              [ [bar2group1data],  [bar2group2data],..],
+#           ]
+
+#  OR YOU CAN ALSO PROVIDE MEAN AND STDEVS DIRECTLY
+
+data = [
+
+[
+[3,4,5,6,7,4,4,5,6,6,7],
+[4,5,6,7,4,4,5,6,6,7,8,8,8,8,9,9,10],
+[5,6,7,4,4,5,6,6,7,8,8,9,9,9,9,9,10,12]
+],
+
+[
+[1,2,3,4,5,6,7,4,4,5,6,6,7],
+[1,2,3,4,5,6,7,4,4,5,6,6,7],
+[1,2,3,4,5,6,7,4,4,5,6,6,7]
+],
+
+[
+[3,4,5,6,7,4],
+[4,5,6,7,4,4,5,6,],
+[5,6,7,4,4,5,6,6,7,8,8]
+]
+
+]
+
+data_means  = None
+data_stdev = None
+# ==============================================================================================
 ```
 
