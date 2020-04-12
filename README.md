@@ -2,6 +2,7 @@
 Simple plotting scripts for a bit complicated matplotlib plots
 
 ## Grouped Boxplot
+![grouped boxplot image](https://github.com/ghoshbishakh/plotscripts/raw/master/images/barplot.png)
 
 Just change `boxplot.py` with our data and configs in the following lines:
 
