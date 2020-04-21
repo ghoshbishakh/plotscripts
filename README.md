@@ -4,7 +4,7 @@ Simple plotting scripts for a bit complicated matplotlib plots
 ## Grouped Boxplot
 ![grouped boxplot image](https://github.com/ghoshbishakh/plotscripts/raw/master/images/boxplot.png)
 
-Just change `boxplot.py` with our data and configs in the following lines:
+Just change `boxplot.py` with your data and configs in the following lines:
 
 ```python
 # Configuration ----------------------------------------
@@ -65,7 +65,7 @@ data = [
 
 ![grouped barplot](https://github.com/ghoshbishakh/plotscripts/raw/master/images/barplot.png)
 
-Just change `barplot.py` with our data and configs in the following lines:
+Just change `barplot.py` with your data and configs in the following lines:
 
 
 ```python
@@ -137,6 +137,9 @@ data_stdev = None
 ## Line Plots with error bars
 
 ![line plot](https://github.com/ghoshbishakh/plotscripts/raw/master/images/lineplot.png)
+
+Just change `lineplot.py` with your data and configs in the following lines:
+
 
 ```python
 # Configuration ----------------------------------------
