@@ -59,6 +59,8 @@ data = [
 ]
 ```
 
+---
+
 ## Grouped Barplot
 
 ![grouped barplot](https://github.com/ghoshbishakh/plotscripts/raw/master/images/barplot.png)
@@ -130,3 +132,62 @@ data_stdev = None
 # ==============================================================================================
 ```
 
+---
+
+## Line Plots with error bars
+
+![line plot](https://github.com/ghoshbishakh/plotscripts/raw/master/images/lineplot.png)
+
+```python
+# Configuration ----------------------------------------
+
+# number of lines = number of things to compare
+# = legends, one for each box
+line_legends = ['Line1', 'Line2']
+
+
+
+xlabel = "X axis"
+ylabel = "Y axis"
+
+log_scale = False
+
+save=False
+file_name = "lineplot.eps"
+
+
+# Styles ------------------------------------------------
+
+linewidth=2
+
+# error bar styles:
+capsize=2
+elinewidth=2
+
+
+xtickrotation = 0
+font_size = 12
+font_weight = 'bold'
+label_font_weight = 'bold'
+
+
+
+fig_size = (6, 4)
+
+#  Data-------------------------------------------------------
+#  Format = [
+             # ( [line1 x points],  [line 1 y points], [line 1 y error : Not required]),
+             # ( [line 2 x points],  [line 2 y points], [line 1 y error : Not required]),
+#           ]
+
+
+data = [
+
+( [1,2,3,4,5,6,7,8,9,10,11,12], [1,2,3,4,5,6,7,8,9,10,11,12], ),
+( [1,2,3,4,5,6,7,8,9,10,11,12], [1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144], [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0]),
+
+]
+
+# ==============================================================================================
+
+```
